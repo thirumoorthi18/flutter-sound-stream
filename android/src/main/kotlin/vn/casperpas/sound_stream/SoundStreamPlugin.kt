@@ -19,7 +19,6 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry
-import io.flutter.plugin.common.PluginRegistry.Registrar
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.nio.ShortBuffer
@@ -94,15 +93,7 @@ public class SoundStreamPlugin : FlutterPlugin,
     // them functionally equivalent. Only one of onAttachedToEngine or registerWith will be called
     // depending on the user's project. onAttachedToEngine or registerWith must both be defined
     // in the same class.
-    companion object {
-        @JvmStatic
-        fun registerWith(registrar: Registrar) {
-            val plugin = SoundStreamPlugin()
-            plugin.currentActivity = registrar.activity()
-            registrar.addRequestPermissionsResultListener(plugin)
-            plugin.onAttachedToEngine(registrar.context(), registrar.messenger())
-        }
-    }
+    
 
     override fun onMethodCall(call: MethodCall, result: Result) {
         try {
